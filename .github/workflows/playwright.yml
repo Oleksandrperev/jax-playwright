@@ -27,10 +27,18 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
+      # Create .env so dotenv in playwright.config.js can load it
+      - name: Create .env for CI
+        run: |
+          echo "ENV=qa" >> .env
+          echo "BASE_URL_QA=${{ secrets.BASE_URL_QA }}" >> .env
+          echo "USER_EMAIL=${{ secrets.USER_EMAIL }}" >> .env
+          echo "USER_PASSWORD=${{ secrets.USER_PASSWORD }}" >> .env
+
       - name: Run Playwright tests
         env:
           CI: true
-        run: npx playwright test --reporter=html
+        run: npx playwright test
 
       - name: Upload Playwright report
         if: ${{ !cancelled() }}
