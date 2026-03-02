@@ -29,11 +29,9 @@ test('Smoke Test - user can login with valid credentials', async ({ page }) => {
     USER_EMAIL, 
     USER_PASSWORD);
     
-
     await expect(homePage.globalSearch).toBeVisible();
     await expect(homePage.userMenuByText(username)).toBeVisible();
 
-    
     const actualUsername = await homePage.getDisplayedUsername();
     expect(actualUsername).toBe(username);
 
