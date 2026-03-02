@@ -6,7 +6,7 @@ const { HomePage } = require('../src/pages/home-page')
 // Read credentials from environment variables
 const USER_EMAIL = process.env.USER_EMAIL;
 const USER_PASSWORD = process.env.USER_PASSWORD;
-const username = 'oleksandr';
+const username = 'oleksandr.perev';
 
 test('Smoke Test - user can login with valid credentials', async ({ page }) => {
   // Skip this test if credentials are not provided
